@@ -16,3 +16,14 @@ global base "D:\Alejandro\1_Bases de datos\ENAHO\Bases anuales"
 	cap rename abc_p310c1 p310c1
 	save "$base\enaho01a-`i'-300", replace
 	}
+	
+	* Factores de expansión
+	tabstat facpob07, by(a_o)
+	tabstat factor07, by(a_o)
+	replace factor07=facpob07 if a_o=="2012"
+	
+	tabstat factor07a, by(a_o)	
+	replace factor07a=factor07 if inlist(a_o,"2004","2005","2006","2007","2008") | inlist(a_o,"2009","2010","2011","2012","2013","2014")
+
+
+
